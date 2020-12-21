@@ -42,3 +42,4 @@ if new_time > file_time:
     update_file()
 
 print("update")
+os.system('pause')
