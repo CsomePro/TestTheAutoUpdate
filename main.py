@@ -40,3 +40,5 @@ file_time = os.path.getmtime('main.py')
 if new_time > file_time:
     print("updating")
     update_file()
+
+print("update")
