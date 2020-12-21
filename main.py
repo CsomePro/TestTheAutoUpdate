@@ -37,6 +37,8 @@ api = 'https://api.github.com/repos/CsomePro/TestTheAutoUpdate'
 allInfo = requests.get(api).json()
 new_time = time.mktime(time.strptime(allInfo['updated_at'], "%Y-%m-%dT%H:%M:%SZ"))
 file_time = os.path.getmtime('main.py')
+print(new_time)
+print(file_time)
 if new_time > file_time:
     print("updating")
     update_file()
