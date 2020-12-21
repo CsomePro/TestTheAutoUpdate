@@ -3,10 +3,14 @@ import requests
 import os
 import zipfile
 
+url = 'https://github.com/CsomePro/TestTheAutoUpdate/archive/master.zip'
+objectn = 'TestTheAutoUpdate-master'
+dest = 'main.py'
 
-def update_file():
+
+def update_file(downloadUrl, objectName, targetFile):
     # 下载zip文件
-    downloadUrl = 'https://github.com/CsomePro/TestTheAutoUpdate/archive/master.zip'
+    mainFile = objectName + "-master/" + targetFile
     print('正在下载文件...')
     with open('tmp.zip', 'wb') as f:
         f.write(requests.get(downloadUrl).content)
@@ -16,19 +20,19 @@ def update_file():
     # print(zipList)
     # abspath = os.path.dirname(os.path.abspath(__file__))
     # print(os.path.dirname(os.path.abspath(__file__)))
-    zipFile.extract('TestTheAutoUpdate-master/main.py')
+    zipFile.extract(mainFile)
     zipFile.close()
 
     # 复制文件
     print('正在替换文件...')
-    with open('TestTheAutoUpdate-master/main.py', 'rb') as source:
-        with open('main.py', 'wb') as destination:
+    with open(mainFile, 'rb') as source:
+        with open(targetFile, 'wb') as destination:
             destination.write(source.read())
 
     # 删除文件
     os.remove('tmp.zip')
-    os.remove('TestTheAutoUpdate-master/main.py')
-    os.rmdir('TestTheAutoUpdate-master')
+    os.remove(mainFile)
+    os.rmdir(os.path.dirname(mainFile))
 
     print('更新成功！')
 
@@ -41,7 +45,7 @@ print(new_time)
 print(file_time)
 if new_time > file_time:
     print("updating")
-    update_file()
+    update_file(url, objectn, dest)
 
 print("update")
 os.system('pause')
