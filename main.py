@@ -26,8 +26,8 @@ zipFile.close()
 
 # 复制文件
 print('正在替换文件...')
-with open('TestTheAutoUpdate-master/main.py', 'r') as source:
-    with open('main.py', 'w') as destination:
+with open('TestTheAutoUpdate-master/main.py', 'rb') as source:
+    with open('main.py', 'wb') as destination:
         destination.write(source.read())
 
 # 删除文件
@@ -36,4 +36,4 @@ os.remove('TestTheAutoUpdate-master/main.py')
 os.rmdir('TestTheAutoUpdate-master')
 
 print('更新成功！')
-print("Aaaa")
+print("aaaaaa")
