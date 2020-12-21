@@ -12,6 +12,7 @@ allInfo = requests.get(api).json()
 # print(os.path.getmtime('main.py'))
 #
 # 下载zip文件
+print('正在下载文件...')
 with open('tmp.zip', 'wb') as f:
     f.write(requests.get(downloadUrl).content)
 # 解压zip文件
@@ -24,6 +25,7 @@ zipFile.extract('TestTheAutoUpdate-master/main.py')
 zipFile.close()
 
 # 复制文件
+print('正在替换文件...')
 with open('TestTheAutoUpdate-master/main.py', 'r') as source:
     with open('main.py', 'w') as destination:
         destination.write(source.read())
