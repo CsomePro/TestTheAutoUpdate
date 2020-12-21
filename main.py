@@ -36,4 +36,4 @@ os.remove('TestTheAutoUpdate-master/main.py')
 os.rmdir('TestTheAutoUpdate-master')
 
 print('更新成功！')
-print("aaaaa")
+print("全新更新")
